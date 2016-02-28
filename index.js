@@ -23,6 +23,7 @@ var React = require('react');
 var ReactDom = require('react-dom');
 var $ = require('jquery');
 var MenuBar=require('./menubar');
+var Register=require('./register');
 var app = {
     // Application Constructor
     initialize: function() {
@@ -43,7 +44,11 @@ var app = {
         app.receivedEvent('deviceready');
         ReactDom.render(
         <MenuBar/>,
-           document.getElementById('menubar')
+           document.getElementById('Menubar')
+        );
+        ReactDom.render(
+        <Register/>,
+           document.getElementById('Register')
         );
         console.log("YAHOOO!!!!\n");
     },
