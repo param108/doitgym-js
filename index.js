@@ -28,6 +28,15 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        ReactDom.render(
+        <MenuBar/>,
+           document.getElementById('Menubar')
+        );
+        ReactDom.render(
+        <Register/>,
+           document.getElementById('Register')
+        );
+
     },
     // Bind Event Listeners
     //
@@ -42,25 +51,18 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        ReactDom.render(
-        <MenuBar/>,
-           document.getElementById('Menubar')
-        );
-        ReactDom.render(
-        <Register/>,
-           document.getElementById('Register')
-        );
         console.log("YAHOOO!!!!\n");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        //var parentElement = document.getElementById(id);
+        //var listeningElement = parentElement.querySelector('.listening');
+        //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
+        $('#deviceready').hide();
+        $('#Register').fadeIn();
         console.log('Received Event: ' + id);
     }
 };

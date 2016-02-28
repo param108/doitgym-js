@@ -14,6 +14,12 @@ var Register=React.createClass({
   },
 
   componentDidMount: function() {
+    $('.register-input').keypress(function(event) {
+       var keyCode = (event.keyCode? event.keyCode: event.which);
+       if (keyCode == '13'){
+         console.log("Pressed Enter");
+       }
+    });
   },
 
   menuClicked: function() {
@@ -26,7 +32,7 @@ var Register=React.createClass({
 
     return (
       <div className="register">
-      <input type='text' name="email" placeholder="Your Email" /> 
+      <input className="register-input" type='text' name="email" placeholder="Your Email" /> 
       </div>
     );
   }, 
