@@ -7,6 +7,23 @@ var React = require('react');
 var ReactDom = require('react-dom');
 var $ = require('jquery');
 require('jquery-ui');
+function showRegisterTab(data) {
+  $('#Register').fadeIn();
+}
+function sendEmail() {
+  $.ajax({
+    url: 'https://python-doitgym.rhcloud.com/register',
+    method: 'POST',
+    data: { name: $('.register-input').val()},
+    cache: false,
+    success: function(data, stat, obj) {
+      Dispatch.dispatch('EMAIL_VERIFICATION_SENT');
+    },
+    timeout: 2000,
+    error: function(data, stat, obj) {
+    }
+  });
+}
 var Register=React.createClass({
   getInitialState: function() {
     return {
@@ -14,10 +31,11 @@ var Register=React.createClass({
   },
 
   componentDidMount: function() {
+    Dispatch.register("REGISTRATION_REQD", showRegisterTab);
     $('.register-input').keypress(function(event) {
        var keyCode = (event.keyCode? event.keyCode: event.which);
        if (keyCode == '13'){
-         console.log("Pressed Enter");
+         sendEmail();
        }
     });
   },
